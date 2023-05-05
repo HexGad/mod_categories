@@ -50,7 +50,7 @@ class CategoriesServiceProvider extends ServiceProvider
     protected function registerAssets()
     {
         $this->publishes([
-            module_path($this->moduleName, 'dist/build-categories') => public_path(),
+            module_path($this->moduleName, 'dist/build-categories') => public_path('build-categories'),
         ], 'modules-assets');
     }
 
