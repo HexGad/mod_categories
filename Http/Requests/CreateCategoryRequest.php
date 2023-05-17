@@ -24,6 +24,7 @@ class CreateCategoryRequest extends FormRequest
     {
         return [
             'name'=> ['required', Rule::unique('categories', 'name')],
+            'slug'=> ['required', Rule::unique('categories', 'slug')],
             'description'=> ['required'],
         ];
     }

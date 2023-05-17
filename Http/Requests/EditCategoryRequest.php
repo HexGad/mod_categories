@@ -24,8 +24,8 @@ class EditCategoryRequest extends FormRequest
     {
         return [
             'name'=> [
+                'required',
                 Rule::unique('categories', 'name')->ignore($this->category),
-                'required'
             ],
             'description'=> ['required'],
         ];

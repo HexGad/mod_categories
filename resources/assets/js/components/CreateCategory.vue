@@ -2,10 +2,19 @@
   <div class="card card-body">
     <div class="row">
       <div class="row mt-3 mb-3">
-        <div class="form-group">
-          <label for="">Name</label>
-          <input class="form-control" v-model="category.name">
-          <small class="text-danger" v-if="errors.name">{{ errors.name[0] }}</small>
+        <div class="col">
+          <div class="form-group">
+            <label for="">Name</label>
+            <input class="form-control" v-model="category.name" @change="generateSlugFromTitle">
+            <small class="text-danger" v-if="errors.name">{{ errors.name[0] }}</small>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="">Slug</label>
+            <input class="form-control" v-model="category.slug">
+            <small class="text-danger" v-if="errors.slug">{{ errors.slug[0] }}</small>
+          </div>
         </div>
       </div>
       <div class="row mt-3 mb-3">
@@ -41,10 +50,12 @@ export default {
     is_loading: false,
     category: {
       name: null,
+      slug: null,
       description: null,
     },
     errors: {
       name: null,
+      slug: null,
       description: null
     }
   }),
@@ -61,6 +72,13 @@ export default {
 
         this.is_loading = false;
       });
+    },
+    generateSlugFromTitle(){
+        this.category.slug = this.category.name.toString().toLowerCase()
+            .replace(/\s+/g, '-')
+            .replace(/[^\w\u0621-\u064A0-9-]+/g, '')
+            .replace(/\-\-+/g, '-')
+            .replace(/^-+/, '').replace(/-+$/, '');
     }
   }
 }

@@ -2,11 +2,11 @@
   <div class="card card-body">
     <div class="row">
       <div class="row mt-3 mb-3">
-        <div class="form-group">
-          <label for="">Name</label>
-          <input class="form-control" v-model="category.name">
-          <small class="text-danger" v-if="errors.name">{{ errors.name[0] }}</small>
-        </div>
+          <div class="form-group">
+            <label for="">Name</label>
+            <input class="form-control" v-model="category.name">
+            <small class="text-danger" v-if="errors.name">{{ errors.name[0] }}</small>
+          </div>
       </div>
       <div class="row mt-3 mb-3">
         <div class="form-group">
